@@ -1,26 +1,15 @@
 --// --- [ الإعدادات ] ---
-local AdLink = "https://link-target.net/4531275/P0iaGY5F8msS" 
--- تأكد أن هذا الرابط هو رابط الـ RAW (الذي يبدأ بـ raw.pastebin)
-local KeyURL = "https://pastebin.com/raw/GuP1TyYr" 
+local AdLink = "https://direct-link.net/4531275/x1xjDAVIyiRe" 
+local KeyURL = "https://pastebin.com/raw/Fnqaiw4B" 
 
---// --- [ وظيفة جلب المفتاح - نسخة مطورة ] ---
-local function GetOnlineKey()
-    local success, result = pcall(function()
-        return game:HttpGet(KeyURL)
-    end)
-    if success and result then
-        -- تنظيف النص من أي فراغات أو أسطر جديدة قد تخرب المفتاح
-        return result:gsub("%s+", "")
-    else
-        return nil
-    end
+local function GetCloudData(url)
+    local success, result = pcall(function() return game:HttpGet(url) end)
+    return success and result or nil
 end
 
---// --- [ إنشاء الواجهة ] ---
 local KeyGui = Instance.new("ScreenGui", game:GetService("CoreGui"))
 local MainFrame = Instance.new("Frame", KeyGui)
-MainFrame.Name = "KeySystem_Ghazwan"
-MainFrame.Size = UDim2.new(0, 0, 0, 0)
+MainFrame.Size = UDim2.new(0, 0, 0, 0) -- للأنيميشن
 MainFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
 MainFrame.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
 MainFrame.ClipsDescendants = true
@@ -32,17 +21,16 @@ local Stroke = Instance.new("UIStroke", MainFrame)
 Stroke.Thickness = 3
 spawn(function()
     local c = 0
-    while wait() do 
-        c = c + 0.01 
-        Stroke.Color = Color3.fromHSV(c % 1, 1, 1) 
-    end
+    while wait() do c = c + 0.01 Stroke.Color = Color3.fromHSV(c % 1, 1, 1) end
 end)
 
-MainFrame:TweenSizeAndPosition(UDim2.new(0, 320, 0, 220), UDim2.new(0.5, -160, 0.5, -110), "Out", "Back", 0.5)
+-- [ أنيميشن الدخول ]
+MainFrame:TweenSizeAndPosition(UDim2.new(0, 350, 0, 220), UDim2.new(0.5, -175, 0.5, -110), "Out", "Back", 0.5)
 
+-- [ العنوان والاسم ]
 local Title = Instance.new("TextLabel", MainFrame)
-Title.Text = "Underground war 2.0_jazwan 27"
-Title.Size = UDim2.new(1, -45, 0, 40)
+Title.Text = "@Underground war 2.0 _ jazwan27"
+Title.Size = UDim2.new(1, -50, 0, 40)
 Title.Position = UDim2.new(0, 15, 0, 5)
 Title.TextColor3 = Color3.new(1, 1, 1)
 Title.BackgroundTransparency = 1
@@ -50,66 +38,62 @@ Title.Font = Enum.Font.GothamBold
 Title.TextSize = 14
 Title.TextXAlignment = Enum.TextXAlignment.Left
 
+-- [ زر الإغلاق X ]
 local CloseBtn = Instance.new("TextButton", MainFrame)
 CloseBtn.Text = "X"
 CloseBtn.Size = UDim2.new(0, 30, 0, 30)
 CloseBtn.Position = UDim2.new(1, -35, 0, 5)
-CloseBtn.BackgroundColor3 = Color3.fromRGB(150, 0, 0)
+CloseBtn.BackgroundColor3 = Color3.fromRGB(180, 0, 0)
 CloseBtn.TextColor3 = Color3.new(1, 1, 1)
 Instance.new("UICorner", CloseBtn)
+CloseBtn.MouseButton1Click:Connect(function() KeyGui:Destroy() end)
 
-CloseBtn.MouseButton1Click:Connect(function()
-    MainFrame:TweenSize(UDim2.new(0, 0, 0, 0), "In", "Back", 0.4, true, function()
-        KeyGui:Destroy()
-    end)
-end)
-
+-- [ مربع إدخال المفتاح - مصلح للنصوص الطويلة ]
 local KeyInput = Instance.new("TextBox", MainFrame)
-KeyInput.PlaceholderText = "Connecting to Pastebin..."
+KeyInput.PlaceholderText = "Enter Key Here..."
 KeyInput.Size = UDim2.new(0.85, 0, 0, 45)
-KeyInput.Position = UDim2.new(0.075, 0, 0.35, 0)
+KeyInput.Position = UDim2.new(0.075, 0, 0.4, 0)
 KeyInput.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
 KeyInput.TextColor3 = Color3.new(1, 1, 1)
-KeyInput.Text = ""
+KeyInput.Font = Enum.Font.Gotham
+KeyInput.TextScaled = true -- أهم خاصية لكي لا يخرج النص من المربع
 Instance.new("UICorner", KeyInput)
 
+-- [ زر التحقق ]
 local VerifyBtn = Instance.new("TextButton", MainFrame)
 VerifyBtn.Text = "Verify ✅"
-VerifyBtn.Size = UDim2.new(0, 130, 0, 40)
-VerifyBtn.Position = UDim2.new(0.075, 0, 0.65, 0)
+VerifyBtn.Size = UDim2.new(0, 135, 0, 40)
+VerifyBtn.Position = UDim2.new(0.075, 0, 0.7, 0)
 VerifyBtn.BackgroundColor3 = Color3.fromRGB(180, 0, 0)
 VerifyBtn.TextColor3 = Color3.new(1, 1, 1)
 Instance.new("UICorner", VerifyBtn)
 
-local GetKeyBtn = Instance.new("TextButton", MainFrame)
-GetKeyBtn.Text = "Get Key 🔑"
-GetKeyBtn.Size = UDim2.new(0, 130, 0, 40)
-GetKeyBtn.Position = UDim2.new(0.525, 0, 0.65, 0)
-GetKeyBtn.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-GetKeyBtn.TextColor3 = Color3.new(1, 1, 1)
-Instance.new("UICorner", GetKeyBtn)
+-- [ زر جلب المفتاح ]
+local GetBtn = Instance.new("TextButton", MainFrame)
+GetBtn.Text = "Get Key 🔑"
+GetBtn.Size = UDim2.new(0, 135, 0, 40)
+GetBtn.Position = UDim2.new(0.53, 0, 0.7, 0)
+GetBtn.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+GetBtn.TextColor3 = Color3.new(1, 1, 1)
+Instance.new("UICorner", GetBtn)
 
-GetKeyBtn.MouseButton1Click:Connect(function()
+GetBtn.MouseButton1Click:Connect(function()
     setclipboard(AdLink)
-    GetKeyBtn.Text = "Copied! ✅"
-    wait(2)
-    GetKeyBtn.Text = "Get Key 🔑"
+    GetBtn.Text = "Copied!"
+    wait(1)
+    GetBtn.Text = "Get Key 🔑"
 end)
 
 VerifyBtn.MouseButton1Click:Connect(function()
-    local CorrectKey = GetOnlineKey()
-    
-    if not CorrectKey then
-        KeyInput.PlaceholderText = "FAILED TO CONNECT! ⚠️"
-        return
-    end
-
-    if KeyInput.Text == CorrectKey then
-        VerifyBtn.Text = "Correct! Loading..."
-        wait(0.5)
-        KeyGui:Destroy()
-        
-        --// Created by Ghazwan - Full English Edition (With Close Animation)
+    local OnlineKey = GetCloudData(KeyURL)
+    if OnlineKey then
+        OnlineKey = OnlineKey:gsub("%s+", "")
+        if KeyInput.Text == OnlineKey then
+            VerifyBtn.Text = "Success!"
+            wait(0.5)
+            KeyGui:Destroy()
+            
+            --// Created by Ghazwan - Full English Edition (With Close Animation)
 local TweenService = game:GetService("TweenService")
 local CoreGui = game:GetService("CoreGui")
 local Players = game:GetService("Players")
@@ -590,23 +574,11 @@ StartCircleAnimation()
 
 ShowNotification("Script Ready! Created by Ghazwan 💎")
 
-        
-        
-    else
-        KeyInput.Text = ""
-        KeyInput.PlaceholderText = "WRONG KEY! ❌"
-        VerifyBtn.BackgroundColor3 = Color3.fromRGB(100, 0, 0)
-        wait(1)
-        VerifyBtn.BackgroundColor3 = Color3.fromRGB(180, 0, 0)
-    end
-end)
-
--- التحقق من الاتصال عند التشغيل
-spawn(function()
-    local check = GetOnlineKey()
-    if check then
-        KeyInput.PlaceholderText = "Key Loaded! Enter it here..."
-    else
-        KeyInput.PlaceholderText = "Check Internet / Link! ⚠️"
+            print("Starting Ghazwan Hub...")
+            
+        else
+            KeyInput.Text = ""
+            KeyInput.PlaceholderText = "WRONG KEY! ❌"
+        end
     end
 end)
