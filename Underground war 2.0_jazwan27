@@ -350,6 +350,8 @@ CreateScriptBtn("Aimbot 🎯", Page2, "https://raw.githubusercontent.com/jazwan/
 CreateScriptBtn("Transmission ⚡", Page2, "https://raw.githubusercontent.com/jazwan/Move-/refs/heads/main/Move_jazwan27")
 CreateScriptBtn("ESP Enemy 👁️", Page2, "https://raw.githubusercontent.com/jazwan/esp_jazwan27/refs/heads/main/esp_jazwan27")
 CreateScriptBtn("X-rays 🦴", Page2, "https://raw.githubusercontent.com/jazwan/xray/refs/heads/main/xray_jazwan27")
+-- الميزة الجديدة تحت الأشعة مباشرة
+CreateScriptBtn("Demonic Attachment 👹", Page2, "https://raw.githubusercontent.com/jazwan/demonic_attachment-/refs/heads/main/demonic_attachment")
 
 --// Page 3 Scripts
 CreateScriptBtn("Noclip 👻", Page3, "https://raw.githubusercontent.com/jazwan/Noclip_jazwan27/refs/heads/main/Noclip_jazwan20.lua")
