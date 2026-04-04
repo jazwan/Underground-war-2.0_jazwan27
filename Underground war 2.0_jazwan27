@@ -1,99 +1,4 @@
---// --- [ الإعدادات ] ---
-local AdLink = "https://direct-link.net/4531275/x1xjDAVIyiRe" 
-local KeyURL = "https://pastebin.com/raw/Fnqaiw4B" 
-
-local function GetCloudData(url)
-    local success, result = pcall(function() return game:HttpGet(url) end)
-    return success and result or nil
-end
-
-local KeyGui = Instance.new("ScreenGui", game:GetService("CoreGui"))
-local MainFrame = Instance.new("Frame", KeyGui)
-MainFrame.Size = UDim2.new(0, 0, 0, 0) -- للأنيميشن
-MainFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
-MainFrame.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
-MainFrame.ClipsDescendants = true
-MainFrame.Active = true
-MainFrame.Draggable = true 
-Instance.new("UICorner", MainFrame)
-
-local Stroke = Instance.new("UIStroke", MainFrame)
-Stroke.Thickness = 3
-spawn(function()
-    local c = 0
-    while wait() do c = c + 0.01 Stroke.Color = Color3.fromHSV(c % 1, 1, 1) end
-end)
-
--- [ أنيميشن الدخول ]
-MainFrame:TweenSizeAndPosition(UDim2.new(0, 350, 0, 220), UDim2.new(0.5, -175, 0.5, -110), "Out", "Back", 0.5)
-
--- [ العنوان والاسم ]
-local Title = Instance.new("TextLabel", MainFrame)
-Title.Text = "@Underground war 2.0 _ jazwan27"
-Title.Size = UDim2.new(1, -50, 0, 40)
-Title.Position = UDim2.new(0, 15, 0, 5)
-Title.TextColor3 = Color3.new(1, 1, 1)
-Title.BackgroundTransparency = 1
-Title.Font = Enum.Font.GothamBold
-Title.TextSize = 14
-Title.TextXAlignment = Enum.TextXAlignment.Left
-
--- [ زر الإغلاق X ]
-local CloseBtn = Instance.new("TextButton", MainFrame)
-CloseBtn.Text = "X"
-CloseBtn.Size = UDim2.new(0, 30, 0, 30)
-CloseBtn.Position = UDim2.new(1, -35, 0, 5)
-CloseBtn.BackgroundColor3 = Color3.fromRGB(180, 0, 0)
-CloseBtn.TextColor3 = Color3.new(1, 1, 1)
-Instance.new("UICorner", CloseBtn)
-CloseBtn.MouseButton1Click:Connect(function() KeyGui:Destroy() end)
-
--- [ مربع إدخال المفتاح - مصلح للنصوص الطويلة ]
-local KeyInput = Instance.new("TextBox", MainFrame)
-KeyInput.PlaceholderText = "Enter Key Here..."
-KeyInput.Size = UDim2.new(0.85, 0, 0, 45)
-KeyInput.Position = UDim2.new(0.075, 0, 0.4, 0)
-KeyInput.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
-KeyInput.TextColor3 = Color3.new(1, 1, 1)
-KeyInput.Font = Enum.Font.Gotham
-KeyInput.TextScaled = true -- أهم خاصية لكي لا يخرج النص من المربع
-Instance.new("UICorner", KeyInput)
-
--- [ زر التحقق ]
-local VerifyBtn = Instance.new("TextButton", MainFrame)
-VerifyBtn.Text = "Verify ✅"
-VerifyBtn.Size = UDim2.new(0, 135, 0, 40)
-VerifyBtn.Position = UDim2.new(0.075, 0, 0.7, 0)
-VerifyBtn.BackgroundColor3 = Color3.fromRGB(180, 0, 0)
-VerifyBtn.TextColor3 = Color3.new(1, 1, 1)
-Instance.new("UICorner", VerifyBtn)
-
--- [ زر جلب المفتاح ]
-local GetBtn = Instance.new("TextButton", MainFrame)
-GetBtn.Text = "Get Key 🔑"
-GetBtn.Size = UDim2.new(0, 135, 0, 40)
-GetBtn.Position = UDim2.new(0.53, 0, 0.7, 0)
-GetBtn.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-GetBtn.TextColor3 = Color3.new(1, 1, 1)
-Instance.new("UICorner", GetBtn)
-
-GetBtn.MouseButton1Click:Connect(function()
-    setclipboard(AdLink)
-    GetBtn.Text = "Copied!"
-    wait(1)
-    GetBtn.Text = "Get Key 🔑"
-end)
-
-VerifyBtn.MouseButton1Click:Connect(function()
-    local OnlineKey = GetCloudData(KeyURL)
-    if OnlineKey then
-        OnlineKey = OnlineKey:gsub("%s+", "")
-        if KeyInput.Text == OnlineKey then
-            VerifyBtn.Text = "Success!"
-            wait(0.5)
-            KeyGui:Destroy()
-            
-            --// Created by Ghazwan - Full English Edition (With Close Animation)
+--// Created by Ghazwan - Full English Edition (No Key Version)
 local TweenService = game:GetService("TweenService")
 local CoreGui = game:GetService("CoreGui")
 local Players = game:GetService("Players")
@@ -102,8 +7,6 @@ local HttpService = game:GetService("HttpService")
 local RunService = game:GetService("RunService")
 
 local LocalPlayer = Players.LocalPlayer
-local ScreenGui = Instance.new("ScreenGui", CoreGui)
-ScreenGui.Name = "GhazwanHub_English_Final"
 
 --// --- RGB Notification System ---
 local NotifyGui = Instance.new("ScreenGui", CoreGui)
@@ -141,13 +44,7 @@ local function ShowNotification(text)
     end)
 end
 
---// --- [هذا الجزء يحل محل الجزء المظلل بالأزرق في صورتك] ---
-
-local TweenService = game:GetService("TweenService")
-local CoreGui = game:GetService("CoreGui")
-local RunService = game:GetService("RunService")
-
--- إنشاء الـ ScreenGui (تأكد أن الاسم مطابق لبقية السكربت)
+-- إنشاء الـ ScreenGui الأساسي
 local ScreenGui = Instance.new("ScreenGui", CoreGui)
 ScreenGui.Name = "Ghazwan_SmartHub"
 
@@ -168,13 +65,13 @@ spawn(function()
     while wait() do c = c + 0.01 CatStroke.Color = Color3.fromHSV(c % 1, 1, 1) end
 end)
 
--- [إعادة تعريف الواجهة الأساسية لتناسب النظام الجديد]
+-- [إعادة تعريف الواجهة الأساسية]
 local MainFrame = Instance.new("Frame", ScreenGui)
 MainFrame.Name = "MainFrame"
 MainFrame.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
 MainFrame.Position = UDim2.new(0.5, -250, 0.5, -175)
-MainFrame.Size = UDim2.new(0, 500, 0, 350) -- الحجم الافتراضي
-MainFrame.Visible = true -- اجعلها تظهر عند التشغيل
+MainFrame.Size = UDim2.new(0, 0, 0, 0) -- يبدأ من الصفر للأنيميشن
+MainFrame.Visible = true
 MainFrame.ClipsDescendants = true
 MainFrame.Active = true
 MainFrame.Draggable = true 
@@ -184,7 +81,6 @@ local MainStroke = Instance.new("UIStroke", MainFrame)
 MainStroke.Thickness = 3
 local isRGBTheme = true
 local CurrentThemeColor = Color3.fromRGB(180, 0, 0)
-
 
 spawn(function()
     local counter = 0
@@ -213,20 +109,19 @@ MainTitle.Font = Enum.Font.GothamBold
 MainTitle.TextSize = 16
 MainTitle.TextXAlignment = Enum.TextXAlignment.Left
 
---// --- [Part 2] Minimize Button Header (Red Color) ---
+--// Minimize Button
 local MiniButton = Instance.new("TextButton", Header)
 MiniButton.Name = "MinimizeButton"
 MiniButton.Size = UDim2.new(0, 30, 0, 30)
-MiniButton.Position = UDim2.new(1, -70, 0, 5) -- مكانه بجانب X
+MiniButton.Position = UDim2.new(1, -70, 0, 5)
 MiniButton.Text = "-"
--- تم تغيير اللون هنا ليكون أحمر (120, 0, 0) مثل زر الإغلاق تماماً
 MiniButton.BackgroundColor3 = Color3.fromRGB(120, 0, 0) 
 MiniButton.TextColor3 = Color3.new(1, 1, 1)
 MiniButton.Font = Enum.Font.GothamBold
 MiniButton.TextSize = 20
 Instance.new("UICorner", MiniButton)
 
---// --- تم إصلاح أنيميشن الإغلاق هنا ---
+--// Close Button
 local CloseButton = Instance.new("TextButton", Header)
 CloseButton.Size = UDim2.new(0, 30, 0, 30)
 CloseButton.Position = UDim2.new(1, -35, 0, 5)
@@ -236,12 +131,12 @@ CloseButton.TextColor3 = Color3.new(1,1,1)
 Instance.new("UICorner", CloseButton)
 
 CloseButton.MouseButton1Click:Connect(function()
-    -- أنيميشن التصغير قبل الحذف
     MainFrame:TweenSize(UDim2.new(0, 0, 0, 0), "In", "Back", 0.5, true, function()
         ScreenGui:Destroy()
     end)
 end)
 
+-- أنيميشن الدخول التلقائي
 MainFrame:TweenSize(UDim2.new(0, 500, 0, 350), "Out", "Back", 0.7, true)
 
 --// Tabs and Content
@@ -287,13 +182,12 @@ local Page2 = CreateTabAndContent("Underground war", false)
 local Page3 = CreateTabAndContent("Other Features", false)
 local Page4 = CreateTabAndContent("News", false)
 
---// Home Page Content (Ghazwan Edition)
+--// Home Page Content
 local HomeCatImage = Instance.new("ImageLabel", Page1)
 HomeCatImage.Size = UDim2.new(0, 80, 0, 80) 
 HomeCatImage.BackgroundTransparency = 1
 HomeCatImage.Image = "rbxassetid://79800588917778"
 HomeCatImage.ScaleType = Enum.ScaleType.Fit
-
 local ImageStroke = Instance.new("UIStroke", HomeCatImage)
 ImageStroke.Thickness = 2
 spawn(function()
@@ -327,7 +221,6 @@ AddSocialBtn(Page1, "Telegram", "jazwan27")
 AddSocialBtn(Page1, "Insta", "ghazwan2732026")
 AddSocialBtn(Page1, "Discord", "ghazwan0042")
 
-
 --// Script Button Function
 local function CreateScriptBtn(name, parent, urlOrFunc)
     local B = Instance.new("TextButton", parent)
@@ -348,10 +241,7 @@ end
 --// Page 2 Scripts
 CreateScriptBtn("Aimbot 🎯", Page2, "https://raw.githubusercontent.com/jazwan/Underground-war/refs/heads/main/Aimbot.lua")
 CreateScriptBtn("Transmission ⚡", Page2, "https://raw.githubusercontent.com/jazwan/Move-/refs/heads/main/Move_jazwan27")
-
--- [ الزر الثالث المدمج ]
 CreateScriptBtn("Science Theft 🧪", Page2, "https://raw.githubusercontent.com/jazwan/Science_theft_jazwan27/refs/heads/main/theft_science_jazwan27")
-
 CreateScriptBtn("ESP Enemy 👁️", Page2, "https://raw.githubusercontent.com/jazwan/esp_jazwan27/refs/heads/main/esp_jazwan27")
 CreateScriptBtn("X-rays 🦴", Page2, "https://raw.githubusercontent.com/jazwan/xray/refs/heads/main/xray_jazwan27")
 CreateScriptBtn("Demonic Attachment 👹", Page2, "https://raw.githubusercontent.com/jazwan/demonic_attachment-/refs/heads/main/demonic_attachment")
@@ -462,40 +352,24 @@ RightsTitle.Font = Enum.Font.GothamBold
 AddSocialBtn(Page4, "TikTok", "jazwan27")
 AddSocialBtn(Page4, "Telegram", "jazwan27")
 
---// --- جازوان: نظام الترجمة العالمي المصلح نهائياً ---
-
+--// نظام الترجمة
 local Languages = {
     ["English"] = {Home="Home", War="Underground war", Other="Other Features", News="News", Welcome="Good morning. This script belongs to the developer GHAZWAN.", Hop="Log in to a new server 🌀", SelectLang="Select Language", Done="[Work completed]", Theme="Change Theme Color", Rights="--- Rights 👇 ---", Aim="Aimbot 🎯", Move="Transmission ⚡", ESP="ESP Enemy 👁️", Xray="X-rays 🦴", Noclip="Noclip 👻", Speed="Speed ⚡", Night="Night 🌑"},
     ["العربية"] = {Home="الرئيسية", War="حرب تحت الأرض", Other="ميزات أخرى", News="الأخبار", Welcome="صباح الخير. هذا السكربت تابع للمطور غزوان.", Hop="دخول سيرفر جديد 🌀", SelectLang="اختر اللغة", Done="[تم التنفيذ]", Theme="تغيير لون الثيم", Rights="--- الحقوق 👇 ---", Aim="ايم بوت 🎯", Move="انتقال سريع ⚡", ESP="كشف الأعداء 👁️", Xray="أشعة إكس 🦴", Noclip="اختراق الجدران 👻", Speed="سرعة ⚡", Night="وضع ليلي 🌑"},
-    ["Español"] = {Home="Inicio", War="Guerra", Other="Otras", News="Noticias", Welcome="Buenos días. Script de GHAZWAN.", Hop="Nuevo servidor", SelectLang="Idioma", Aim="Aimbot", Move="Transmisión", ESP="ESP Enemigo", Xray="Rayos X", Noclip="Noclip", Speed="Velocidad", Night="Noche"},
-    ["Türkçe"] = {Home="Ana Sayfa", War="Savaş", Other="Özellikler", News="Haberler", Welcome="Günaydın. Bu script GHAZWAN'a aittir.", Hop="Yeni sunucu", SelectLang="Dil Seçin", Aim="Nişan Yardımı", Move="Işınlanma", ESP="Düşman Göster", Xray="Röntgen", Noclip="Duvar Geçme", Speed="Hız", Night="Gece"},
-    ["Français"] = {Home="Accueil", War="Guerre", Other="Autres", News="Nouvelles", Welcome="Bonjour. Script par GHAZWAN.", Hop="Nouveau serveur", SelectLang="Langue", Aim="Aimbot", Move="Transmission", ESP="ESP Ennemi", Xray="Rayons X", Noclip="Noclip", Speed="Vitesse", Night="Nuit"},
-    ["Deutsch"] = {Home="Start", War="Krieg", Other="Extras", News="Neuigkeiten", Welcome="Guten Morgen. Script von GHAZWAN.", Hop="Neuer Server", SelectLang="Sprache", Aim="Zielhilfe", Move="Teleport", ESP="ESP Gegner", Xray="Röntgen", Noclip="Noclip", Speed="Tempo", Night="Nacht"},
-    ["Русский"] = {Home="Главная", War="Война", Other="Функции", News="Новости", Welcome="Доброе утро. Скрипт от ГАЗВАНА.", Hop="Новый сервер", SelectLang="Язык", Aim="Аимбот", Move="Телепорт", ESP="Есп Враги", Xray="Рентген", Noclip="Ноуклип", Speed="Скорость", Night="Ночь"},
-    ["中文"] = {Home="首页", War="地下战争", Other="其他功能", News="新闻", Welcome="早上好。此脚本属于开发者 GHAZWAN。", Hop="新服务器", SelectLang="选择语言", Aim="自瞄", Move="瞬间移动", ESP="透视敌人", Xray="X光", Noclip="穿墙", Speed="速度", Night="夜晚"},
-    ["日本語"] = {Home="ホーム", War="地下戦争", Other="機能", News="ニュース", Welcome="おはようございます।GHAZWANのスクリプトです。", Hop="新サーバー", SelectLang="言語選択", Aim="エイムボット", Move="瞬間移動", ESP="敵透視", Xray="X線", Noclip="壁抜け", Speed="スピード", Night="夜モード"},
-    ["हिन्दी"] = {Home="होम", War="युद्ध", Other="अन्य सुविधाएँ", News="समाचार", Welcome="शुभ प्रभात। यह स्क्रिप्ट GHAZWAN की है।", Hop="नया सर्वर", SelectLang="भाषा चुनें", Aim="एम्बोट", Move="टेलीポート", ESP="ईएसपी दुश्मन", Xray="एक्स-रे", Noclip="नोक्लिप", Speed="गति", Night="रात"}
 }
 
 local function UpdateLanguage(lang)
     local targetData = Languages[lang]
-    local function TranslateElement(obj)
-        if obj:IsA("TextButton") or obj:IsA("TextLabel") then
-            local currentText = obj.Text
+    for _, item in pairs(MainFrame:GetDescendants()) do
+        if item:IsA("TextButton") or item:IsA("TextLabel") then
+            local currentText = item.Text
             for _, langTable in pairs(Languages) do
                 for key, value in pairs(langTable) do
-                    if currentText == value then
-                        obj.Text = targetData[key]
-                        return 
-                    end
+                    if currentText == value then item.Text = targetData[key] return end
                 end
             end
         end
     end
-    for _, item in pairs(MainFrame:GetDescendants()) do
-        TranslateElement(item)
-    end
-    LangBtn.Text = "🌐 " .. targetData.SelectLang .. ": " .. lang
 end
 
 local LangBtn = Instance.new("TextButton", Page4)
@@ -520,9 +394,7 @@ LangScroll.BackgroundTransparency = 1
 LangScroll.CanvasSize = UDim2.new(0, 0, 0, 320)
 Instance.new("UIListLayout", LangScroll).Padding = UDim.new(0, 5)
 
-LangBtn.MouseButton1Click:Connect(function() 
-    LangListFrame.Visible = not LangListFrame.Visible 
-end)
+LangBtn.MouseButton1Click:Connect(function() LangListFrame.Visible = not LangListFrame.Visible end)
 
 for langName, _ in pairs(Languages) do
     local b = Instance.new("TextButton", LangScroll)
@@ -538,20 +410,14 @@ for langName, _ in pairs(Languages) do
         ShowNotification("Done")
     end)
 end
---// --- [الخطوة الأخيرة: نظام التشغيل الذكي المطور لغزوان] ---
 
-local isUIOpen = true -- الواجهة تبدأ مفتوحة
-
--- وظيفة الفتح والإغلاق الذكي
+--// نظام التشغيل الذكي
+local isUIOpen = true
 local function ToggleGhazwanUI()
     if isUIOpen then
-        -- تصغير الواجهة وإخفاؤها
-        MainFrame:TweenSize(UDim2.new(0, 0, 0, 0), "In", "Back", 0.5, true, function()
-            MainFrame.Visible = false
-        end)
+        MainFrame:TweenSize(UDim2.new(0, 0, 0, 0), "In", "Back", 0.5, true, function() MainFrame.Visible = false end)
         ShowNotification("UI Minimized 🐾")
     else
-        -- إظهار الواجهة وتكبيرها
         MainFrame.Visible = true
         MainFrame:TweenSize(UDim2.new(0, 500, 0, 350), "Out", "Back", 0.5, true)
         ShowNotification("UI Opened 🔓")
@@ -559,17 +425,9 @@ local function ToggleGhazwanUI()
     isUIOpen = not isUIOpen
 end
 
--- ربط الضغط على دائرة القط بالوظيفة
-SmartCatCircle.MouseButton1Click:Connect(function()
-    ToggleGhazwanUI()
-end)
+SmartCatCircle.MouseButton1Click:Connect(ToggleGhazwanUI)
+MiniButton.MouseButton1Click:Connect(function() if isUIOpen then ToggleGhazwanUI() end end)
 
--- ربط زر الناقص (-) ليعمل بنفس الطريقة
-MiniButton.MouseButton1Click:Connect(function()
-    if isUIOpen then ToggleGhazwanUI() end
-end)
-
--- إضافة أنيميشن "النبض" المستمر للدائرة لجعلها حية
 local function StartCircleAnimation()
     local info = TweenInfo.new(1, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut, -1, true)
     local goal = {Size = UDim2.new(0, 52, 0, 52)}
@@ -578,12 +436,3 @@ end
 StartCircleAnimation()
 
 ShowNotification("Script Ready! Created by Ghazwan 💎")
-
-            print("Starting Ghazwan Hub...")
-            
-        else
-            KeyInput.Text = ""
-            KeyInput.PlaceholderText = "WRONG KEY! ❌"
-        end
-    end
-end)
