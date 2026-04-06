@@ -352,20 +352,28 @@ RightsTitle.Font = Enum.Font.GothamBold
 AddSocialBtn(Page4, "TikTok", "jazwan27")
 AddSocialBtn(Page4, "Telegram", "jazwan27")
 
---// نظام الترجمة
+--// نظام الترجمة (إصلاح غزوان - نسخة 2026)
 local Languages = {
     ["English"] = {Home="Home", War="Underground war", Other="Other Features", News="News", Welcome="Good morning. This script belongs to the developer GHAZWAN.", Hop="Log in to a new server 🌀", SelectLang="Select Language", Done="[Work completed]", Theme="Change Theme Color", Rights="--- Rights 👇 ---", Aim="Aimbot 🎯", Move="Transmission ⚡", ESP="ESP Enemy 👁️", Xray="X-rays 🦴", Noclip="Noclip 👻", Speed="Speed ⚡", Night="Night 🌑"},
     ["العربية"] = {Home="الرئيسية", War="حرب تحت الأرض", Other="ميزات أخرى", News="الأخبار", Welcome="صباح الخير. هذا السكربت تابع للمطور غزوان.", Hop="دخول سيرفر جديد 🌀", SelectLang="اختر اللغة", Done="[تم التنفيذ]", Theme="تغيير لون الثيم", Rights="--- الحقوق 👇 ---", Aim="ايم بوت 🎯", Move="انتقال سريع ⚡", ESP="كشف الأعداء 👁️", Xray="أشعة إكس 🦴", Noclip="اختراق الجدران 👻", Speed="سرعة ⚡", Night="وضع ليلي 🌑"},
+    ["Kurdish"] = {Home="سەرەکی", War="شەڕی ژێر زەوی", Other="تایبەتمەندی تر", News="هەواڵەکان", Welcome="بەیانی باش. ئەم سکریپتە هی گەشەپێدەر غەزوانە.", Hop="چوونە ناو سێرڤەری نوێ 🌀", SelectLang="زمان هەڵبژێرە", Done="[تەواو بوو]", Theme="گۆڕینی ڕەنگی تێم", Rights="--- مافەکان 👇 ---", Aim="ئامانج گرتن 🎯", Move="گواستنەوەی خێرا ⚡", ESP="دۆزینەوەی دوژمن 👁️", Xray="تیشكی ئێکس 🦴", Noclip="تیپەڕین لە دیوار 👻", Speed="خێرایی ⚡", Night="دۆخی شەو 🌑"},
+    ["Turkish"] = {Home="Ana Sayfa", War="Yeraltı Savaşı", Other="Diğer Özellikler", News="Haberler", Welcome="Günaydın. Bu script geliştirici GHAZWAN'a aittir.", Hop="Yeni sunucuya gir 🌀", SelectLang="Dil Seçin", Done="[Tamamlandı]", Theme="Temayı Değiştir", Rights="--- Haklar 👇 ---", Aim="Aimbot 🎯", Move="Hızlı Geçiş ⚡", ESP="Düşmanı Gör 👁️", Xray="X-ray 🦴", Noclip="Noclip 👻", Speed="Hız ⚡", Night="Gece Modu 🌑"},
+    ["French"] = {Home="Accueil", War="Guerre Souterraine", Other="Autres Fonctions", News="Nouvelles", Welcome="Bonjour. Ce script appartient au développeur GHAZWAN.", Hop="Nouveau serveur 🌀", SelectLang="Choisir la Langue", Done="[Terminé]", Theme="Changer de thème", Rights="--- Droits 👇 ---", Aim="Aimbot 🎯", Move="Transmission ⚡", ESP="ESP Ennemi 👁️", Xray="Rayons X 🦴", Noclip="Noclip 👻", Speed="Vitesse ⚡", Night="Mode Nuit 🌑"}
 }
 
 local function UpdateLanguage(lang)
     local targetData = Languages[lang]
+    if not targetData then return end
+    
     for _, item in pairs(MainFrame:GetDescendants()) do
         if item:IsA("TextButton") or item:IsA("TextLabel") then
-            local currentText = item.Text
+            -- فحص كل الكلمات المترجمة لاستبدالها
             for _, langTable in pairs(Languages) do
                 for key, value in pairs(langTable) do
-                    if currentText == value then item.Text = targetData[key] return end
+                    if item.Text == value then
+                        item.Text = targetData[key]
+                        break -- ننتقل للعنصر التالي بمجرد إيجاد التطابق
+                    end
                 end
             end
         end
@@ -391,7 +399,7 @@ local LangScroll = Instance.new("ScrollingFrame", LangListFrame)
 LangScroll.Size = UDim2.new(1, -10, 1, -10)
 LangScroll.Position = UDim2.new(0, 5, 0, 5)
 LangScroll.BackgroundTransparency = 1
-LangScroll.CanvasSize = UDim2.new(0, 0, 0, 320)
+LangScroll.CanvasSize = UDim2.new(0, 0, 0, 200)
 Instance.new("UIListLayout", LangScroll).Padding = UDim.new(0, 5)
 
 LangBtn.MouseButton1Click:Connect(function() LangListFrame.Visible = not LangListFrame.Visible end)
@@ -407,7 +415,7 @@ for langName, _ in pairs(Languages) do
     b.MouseButton1Click:Connect(function()
         UpdateLanguage(langName)
         LangListFrame.Visible = false
-        ShowNotification("Done")
+        ShowNotification("Language: " .. langName)
     end)
 end
 
